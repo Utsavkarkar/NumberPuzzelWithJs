@@ -1,0 +1,29 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.buttons{
+	padding: 50px;
+	width: 100%;
+/*	color: white !important;*/
+/*	background-color: black;*/
+}
+.main_row{
+	margin-top: 60px;
+}
+.reset_btn{
+	margin-block-start: 175px;
+  margin-left: 105px  !important;
+  padding:25px 50px;
+/*  color: white !important;*/
+}
+#winner{
+/*	color: white !important;*/
+}
+
+body {
+  margin: 0;
+  padding: 0;
+/*  background: #000;*/
+  overflow: hidden;
+}

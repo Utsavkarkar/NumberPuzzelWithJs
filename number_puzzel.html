@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Number puzzel</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body onload="randomd()">
+
+	<div class="container">
+		<h1 class="text-center mt-5">Number Puzzel</h1>
+		<div class="row main_row">
+			<div class="col-4">
+			</div>
+			<div class="col-4">
+				<div class="row align-items-center">
+					<div class="col-4 g-2"><input type="button" value="1" id="a1" onclick="check_a1()" class="btn border buttons"></div>
+					<div class="col-4 g-2"><input type="button" value="2" id="a2" onclick="check_a2()" class="btn border buttons"></div>
+					<div class="col-4 g-2"><input type="button" value="3" id="a3" onclick="check_a3()" class="btn border buttons"></div>
+				</div>
+				<div class="row">
+					<div class="col-4 g-2"><input type="button" value="4" id="a4" onclick="check_a4()" class="btn border buttons"></div>
+					<div class="col-4 g-2"><input type="button" value="5" id="a5" onclick="check_a5()" class="btn border buttons"></div>
+					<div class="col-4 g-2"><input type="button" value="" id="a6" onclick="check_a6()" class="btn border buttons"></div>
+				</div>
+				<div class="row">
+					<div class="col-4 g-2"><input type="button" value="7" id="a7" onclick="check_a7()" class="btn border buttons"></div>
+					<div class="col-4 g-2"><input type="button" value="8" id="a8" onclick="check_a8()" class="btn border buttons"></div>
+					<div class="col-4 g-2"><input type="button" value="6" id="a9" onclick="check_a9()" class="btn border buttons"></div>
+				</div>
+			</div>
+			<div class="col-4">	
+				<h3 id="winner"></h3>	
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">	
+		var arr = [];      // empty array levano ke jema random function thi value add kari sakay
+		function randomd() 
+		{
+
+			for (var i = 0; i < 9;)             // 0 to 8 random numbers get karva mate for loop
+			{
+				var s = Math.round(Math.random()*8);  //for get 0 to 8 random number. je num sudhi num
+													   // jota etla Math.random()*9,10,11...						
+				if(!arr.includes(s))	// s variable ma store karel num arr namna variable ma store na
+										// hoy to arr.push(s) function thi number add kare.
+									// arr.includes(s) ->for check arr ma s varible ni val 6 ke nathi. 
+				{
+					arr.push(s);  // arr ma value pachhal thi add thay.
+					i++;
+				}																						
+			}
+			// console.log(arr);
+			for (var i = 0,x = 1; i < 9; i++,x++) {      // x is used to generate dynamic id of button
+														 // like id=a1,a2,a3 -> a+x=a1 then x++ ->a2.. 
+
+					document.getElementById('a'+x).value = arr[i];
+					if(arr[i] == 0)
+					{
+						document.getElementById('a' +x).value = '';
+					}	
+			}	
+
+		}
+		// window.onload = function(){
+				
+		// 		randomd();
+		
+		// }
+
+
+
+
+		function check_a1(){
+			let a1=document.getElementById('a1').value;
+			let a2=document.getElementById('a2').value;
+			let a4=document.getElementById('a4').value;
+			if(a1 != '')
+			{
+				if(a2 == ''){
+			 		a2=a1;
+			 		document.getElementById('a2').value=a2;
+			 		document.getElementById('a1').value="";
+			 	}
+			 	if(a4 == ''){
+			 		a4=a1;
+			 		document.getElementById('a4').value=a4;
+			 		document.getElementById('a1').value="";
+			 	}
+			}
+			win();
+		}
+		function check_a2(){
+			let a1=document.getElementById('a1').value;
+			let a2=document.getElementById('a2').value;
+			let a3=document.getElementById('a3').value;
+			let a5=document.getElementById('a5').value;
+			if(a2 != '')
+			{
+				if(a1 == ''){
+			 		a1=a2;
+			 		document.getElementById('a1').value=a1;
+			 		document.getElementById('a2').value="";
+			 	}
+			 	if(a5 == ''){
+			 		a5=a2;
+			 		document.getElementById('a5').value=a5;
+			 		document.getElementById('a2').value="";
+			 	}
+			 	if(a3 == ''){
+			 		a3=a2;
+			 		document.getElementById('a3').value=a3;
+			 		document.getElementById('a2').value="";
+			 	}
+			}	
+			win();		
+		}
+		function check_a3(){
+			let a2=document.getElementById('a2').value;
+			let a3=document.getElementById('a3').value;
+			let a6=document.getElementById('a6').value;
+			if(a3 != '')
+			{
+				if(a2 == ''){
+			 		a2=a3;
+			 		document.getElementById('a2').value=a2;
+			 		document.getElementById('a3').value="";
+			 	}
+			 	if(a6 == ''){
+			 		a6=a3;
+			 		document.getElementById('a6').value=a6;
+			 		document.getElementById('a3').value="";
+			 	}
+			}
+			win();
+		}
+		function check_a4(){
+			let a1=document.getElementById('a1').value;
+			let a5=document.getElementById('a5').value;
+			let a4=document.getElementById('a4').value;
+			let a7=document.getElementById('a7').value;
+			if(a4 != '')
+			{
+				if(a1 == ''){
+			 		a1=a4;
+			 		document.getElementById('a1').value=a1;
+			 		document.getElementById('a4').value="";
+			 	}
+			 	if(a7 == ''){
+			 		a7=a4;
+			 		document.getElementById('a7').value=a7;
+			 		document.getElementById('a4').value="";
+			 	}
+			 	if(a5 == ''){
+			 		a5=a4;
+			 		document.getElementById('a5').value=a5;
+			 		document.getElementById('a4').value="";
+			 	}
+			}
+			win();
+		}
+		function check_a5(){
+			let a2=document.getElementById('a2').value;
+			let a4=document.getElementById('a4').value;
+			let a5=document.getElementById('a5').value;
+			let a6=document.getElementById('a6').value;
+			let a8=document.getElementById('a8').value;
+			if(a5 != '')
+			{
+				if(a2 == ''){
+			 		a2=a5;
+			 		document.getElementById('a2').value=a2;
+			 		document.getElementById('a5').value="";
+			 	}
+			 	if(a4 == ''){
+			 		a4=a5;
+			 		document.getElementById('a4').value=a4;
+			 		document.getElementById('a5').value="";
+			 	}
+			 	if(a6 == ''){
+			 		a6=a5;
+			 		document.getElementById('a6').value=a6;
+			 		document.getElementById('a5').value="";
+			 	}
+			 	if(a8 == ''){
+			 		a8=a5;
+			 		document.getElementById('a8').value=a8;
+			 		document.getElementById('a5').value="";
+			 	}
+			}
+			win();
+		}
+		function check_a6(){
+			let a3=document.getElementById('a3').value;
+			let a5=document.getElementById('a5').value;
+			let a6=document.getElementById('a6').value;
+			let a9=document.getElementById('a9').value;
+			if(a6 != '')
+			{
+				if(a3 == ''){
+			 		a3=a6;
+			 		document.getElementById('a3').value=a3;
+			 		document.getElementById('a6').value="";
+			 	}
+			 	if(a9 == ''){
+			 		a9=a6;
+			 		document.getElementById('a9').value=a9;
+			 		document.getElementById('a6').value="";
+			 	}
+			 	if(a5 == ''){
+			 		a5=a6;
+			 		document.getElementById('a5').value=a5;
+			 		document.getElementById('a6').value="";
+			 	}
+			}
+			win();
+		}
+		function check_a7(){
+			let a4=document.getElementById('a4').value;
+			let a7=document.getElementById('a7').value;
+			let a8=document.getElementById('a8').value;
+			if(a7 != '')
+			{
+				if(a8 == ''){
+			 		a8=a7;
+			 		document.getElementById('a8').value=a8;
+			 		document.getElementById('a7').value="";
+			 	}
+			 	if(a4 == ''){
+			 		a4=a7;
+			 		document.getElementById('a4').value=a4;
+			 		document.getElementById('a7').value="";
+			 	}	
+			}
+			win();
+		}	
+		function check_a8(){
+			let a5=document.getElementById('a5').value;
+			let a7=document.getElementById('a7').value;
+			let a8=document.getElementById('a8').value;
+			let a9=document.getElementById('a9').value;
+			if(a8 != '')
+			{
+				if(a9 == ''){
+			 		a9=a8;
+			 		document.getElementById('a9').value=a9;
+			 		document.getElementById('a8').value="";
+			 	}
+			 	if(a7 == ''){
+			 		a7=a8;
+			 		document.getElementById('a7').value=a7;
+			 		document.getElementById('a8').value="";
+			 	}
+			 	if(a5 == ''){
+			 		a5=a8;
+			 		document.getElementById('a5').value=a5;
+			 		document.getElementById('a8').value="";
+			 	}
+			}
+			win();
+		}
+		function check_a9(){
+			let a6=document.getElementById('a6').value;
+			let a8=document.getElementById('a8').value;
+			let a9=document.getElementById('a9').value;
+
+			if(a9 != '')
+			{
+				if(a8 == ''){
+			 		a8=a9;
+			 		document.getElementById('a8').value=a8;
+			 		document.getElementById('a9').value="";
+			 	}
+			 	if(a6 == ''){
+			 		a6=a9;
+			 		document.getElementById('a6').value=a6;
+			 		document.getElementById('a9').value="";
+			 	}
+			}
+			win();
+		}	
+		function win(){
+			let a1=document.getElementById('a1').value;
+			let a2=document.getElementById('a2').value;
+			let a3=document.getElementById('a3').value;
+			let a4=document.getElementById('a4').value;
+			let a5=document.getElementById('a5').value;
+			let a6=document.getElementById('a6').value;
+			let a7=document.getElementById('a7').value;
+			let a8=document.getElementById('a8').value;
+			let a9=document.getElementById('a9').value;
+			if (a1 == 1 && a2 == 2 && a3 == 3 && a4 == 4 && a5 == 5 && a6 == 6 && a7 == 7 && a8 == 8) {
+				document.getElementById('winner').innerText="You are winner.";
+			}
+		}
+	</script>
+	<script type="" src="js/bootstrap.bundle.min.js" ></script>
+</body>
+</html>
